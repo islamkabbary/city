@@ -15,10 +15,15 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('owner_name')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('owner_name')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('name');
+            $table->string('mobile')->nullable();
+            $table->text('address')->nullable();
             $table->string('whats')->nullable();
             $table->text('commission')->nullable()->default(0);
+            $table->text('logo')->nullable();
             $table->text('slog')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

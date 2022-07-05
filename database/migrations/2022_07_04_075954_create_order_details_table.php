@@ -19,6 +19,7 @@ class CreateOrderDetailsTable extends Migration
             $table->foreignId('product_id')->constrained('products')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('qty')->nullable();
             $table->decimal('price')->nullable();
+            $table->decimal('total')->nullable();
             $table->timestamps();
         });
     }

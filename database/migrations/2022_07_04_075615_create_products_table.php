@@ -17,13 +17,14 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->unsignedFloat('price')->nullable();
-            $table->text('img')->nullable();
+            $table->text('image')->nullable();
             $table->text('description')->nullable();
             $table->enum('status',['available','not_available'])->default('available');
             $table->foreignId('brand_id')->nullable()->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('category_id')->nullable()->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('company_id')->nullable()->constrained()->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('added_tax_id')->nullable()->constrained('added_taxes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('added_tax_id')->nullable()->constrained('added_taxes')->onDelete('cascade')->onUpdate('cascade');    
+            $table->softDeletes();
             $table->timestamps();
         });
     }
