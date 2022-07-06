@@ -22,13 +22,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('jwt.auth')->group(function () {
+    Route::post('logout', [AuthController::class, 'logOut']);
     route::post('update/name', [UserController::class, 'updateName']);
     route::post('update/image', [UserController::class, 'updateImage']);
     route::post('update/password', [UserController::class, 'changePassword']);
+    route::post('add/address', [UserController::class, 'addAddress']);
 });
-
 Route::post('login', [AuthController::class, 'login']);
-Route::post('logout', [AuthController::class, 'logOut'])->middleware('jwt.auth');
 Route::post('register', [AuthController::class, 'register']);
 Route::post('verify/code', [AuthController::class, 'verifyCode']);
 Route::post('send/code', [AuthController::class, 'sendCode']);

@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 class CategoryController extends Controller
 {
     public function index()
-    {
+    {  
         try {
             $data =  Category::all();
             return response()->json(['status' => 1, 'code' => 200, 'message' => trans(''), 'data' => CategoryResource::collection($data)], Response::HTTP_OK);
