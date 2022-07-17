@@ -20,11 +20,12 @@ class CreateOrdersTable extends Migration
             $table->enum('status', ['new', 'accept', 'reject', 'cancel', 'done', 'in_way'])->default('new');
             $table->foreignId('added_tax_id')->nullable()->constrained('added_taxes')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('delivery_value_id')->nullable()->constrained('delivery_values')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('company_id')->nullable()->constrained('companies')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('company_id')->constrained('companies')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('promo_code_id')->nullable()->constrained('promo_codes')->onDelete('cascade')->onUpdate('cascade');
             $table->string('phone')->nullable();
-            $table->integer('sub_total')->nullable();
+            $table->integer('sub_total');
             $table->integer('total');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

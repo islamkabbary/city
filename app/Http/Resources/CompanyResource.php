@@ -2,10 +2,9 @@
 
 namespace App\Http\Resources;
 
-use App\Models\AdditionalInformation;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ProductResource extends JsonResource
+class CompanyResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,13 +16,11 @@ class ProductResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'image' => $this->image,
+            'owner_name' => $this->user->name,
             'name' => $this->name,
-            'price' => $this->price,
-            'company' => $this->company->name,
-            'status' => $this->status,
-            'description' => $this->description,
-            'Additional Information' =>$this->informations,
+            'mobile' => $this->mobile,
+            'address' => $this->address,
+            'logo' => $this->logo,
         ];
     }
 }

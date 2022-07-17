@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class PromoCode extends Model
 {
@@ -18,4 +19,14 @@ class PromoCode extends Model
         'limit_for_user' => 'integer',
         'limit_use' => 'integer',
     ];
+
+    /**
+     * Get all of the orders for the PromoCode
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
 }
